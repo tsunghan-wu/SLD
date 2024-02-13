@@ -1,0 +1,160 @@
+[
+    {
+        "input_fname": "lmdplus_beach",
+        "output_dir": "lmdplus_beach",
+        "prompt": "An oil painting at the beach of a blue bicycle to the left of a bench and to the right of a palm tree with three seagulls in the sky",
+        "generator": "lmdplus",
+        "llm_parsed_prompt":{
+            "objects": [
+                ["bicycle", ["blue"]],
+                ["palm tree", [null]],
+                ["seagull", [null, null, null]],
+                ["bench", [null]]
+            ],
+            "bg_prompt": "An oil painting at the beach",
+            "neg_prompt": null
+        },
+        "llm_layout_suggestions": [
+            ["blue bicycle #1", [0.185, 0.597, 0.359, 0.327]], 
+            ["palm tree #1", [0.141, 0.209, 0.264, 0.544]], 
+            ["seagull #1", [0.389, 0.028, 0.219, 0.169]], 
+            ["bench #1", [0.479, 0.573, 0.519, 0.351]], 
+            ["seagull #2", [0.577, 0.053, 0.219, 0.169]], 
+            ["seagull #3", [0.777, 0.093, 0.219, 0.169]]]
+    },
+    {
+        "input_fname": "dalle3_beach",
+        "output_dir": "dalle3_beach",
+        "prompt": "An oil painting at the beach of a blue bicycle to the left of a bench and to the right of a palm tree with three seagulls in the sky",
+        "generator": "dalle",
+        "llm_parsed_prompt":{ 
+            "objects": [
+                ["bicycle", ["blue"]],
+                ["palm tree", [null]],
+                ["seagull", [null, null, null]],
+                ["bench", [null]]
+            ],
+            "bg_prompt": "An oil painting at the beach",
+            "neg_prompt": null
+        },
+        "llm_layout_suggestions": [
+                ["blue bicycle #1", [0.2, 0.667, 0.423, 0.255]],
+                ["palm tree #1", [0.0, 0.008, 0.515, 0.851]],
+                ["seagull #1", [0.65, 0.361, 0.155, 0.056]],
+                ["seagull #2", [0.567, 0.058, 0.146, 0.132]],
+                ["seagull #3", [0.65, 0.238, 0.14, 0.076]],
+                ["bench #1", [0.6, 0.725, 0.364, 0.173]]
+        ]
+    },
+    {   
+        "input_fname": "lmdplus_motor",
+        "output_dir": "lmdplus_motor",
+        "prompt": "A realistic photo with a monkey sitting above a green motorcycle on the left and another raccoon sittig above a blue motorcycle on the right",
+        "generator": "lmdplus",
+        "llm_parsed_prompt": {
+            "objects": [
+                ["monkey", [null]],
+                ["motorcycle", ["green", "blue"]],
+                ["raccoon", [null]]
+            ],
+            "bg_prompt": "A realistic photo",
+            "neg_prompt": null
+        },
+        "llm_layout_suggestions": [
+            ["monkey #1", [0.022, 0.086, 0.39, 0.486]],
+            ["green motorcycle #1", [0.008, 0.325, 0.472, 0.671]],
+            ["blue motorcycle #1", [0.548, 0.394, 0.405, 0.568]],
+            ["raccoon #1", [0.549, 0.026, 0.402, 0.483]]
+        ]
+    },
+    {
+        "input_fname": "dalle3_motor",
+        "output_dir": "dalle3_motor",
+        "prompt": "A realistic photo with a monkey sitting above a green motorcycle on the left and another raccoon sitting above a blue motorcycle on the right",
+        "generator": "dalle",
+        "llm_parsed_prompt": {
+            "objects": [
+                ["monkey", [null]],
+                ["motorcycle", ["green", "blue"]],
+                ["raccoon", [null]]
+            ],
+            "bg_prompt": "A realistic photo",
+            "neg_prompt": null
+        },
+        "llm_layout_suggestions": [
+            ["monkey #1", [0.009, 0.006, 0.481, 0.821]],
+            ["green motorcycle #1", [0.016, 0.329, 0.506, 0.6]],
+            ["blue motorcycle #1", [0.516, 0.329, 0.484, 0.6]],
+            ["raccoon #1", [0.46, 0.123, 0.526, 0.62]]
+        ]
+    },
+    {
+        "input_fname": "dalle3_snowwhite",
+        "output_dir": "dalle3_snowwhite",
+        "prompt": "A realistic cartoon-style painting with a princess and four dwarfs",
+        "generator": "dalle",
+        "llm_parsed_prompt":{ 
+            "objects": [
+                ["princess", [null]], 
+                ["dwarf", [null, null, null, null]]
+            ],
+            "bg_prompt": "A realistic cartoon-style painting",
+            "neg_prompt": null
+        },
+        "llm_layout_suggestions": [
+            ["princess #1", [0.002, 0.27, 0.448, 0.738]],
+            ["dwarf #1", [0.179, 0.339, 0.286, 0.568]],
+            ["dwarf #2", [0.424, 0.322, 0.227, 0.318]],
+            ["dwarf #3", [0.681, 0.361, 0.311, 0.641]],
+            ["dwarf #4", [0.617, 0.348, 0.25, 0.382]]
+        ]
+    },
+    {
+        "input_fname": "dalle3_clown",
+        "output_dir": "dalle3_clown",
+        "prompt": "A vivid photo where a woman on the right and a clown on the left are walking in a dirty alley",
+        "generator": "dalle",
+        "llm_parsed_prompt":{
+            "objects": [
+                ["woman", [null]], 
+                ["clown", [null]]
+            ],
+            "bg_prompt": "A vivid photo in a dirty alley",
+            "neg_prompt": null
+        },
+        "llm_layout_suggestions": [["woman #1", [0.542, 0.209, 0.237, 0.601]], ["clown #1", [0.206, 0.153, 0.244, 0.81]]]
+    },
+    {
+        "input_fname": "sdxl_beach",
+        "output_dir": "sdxl_beach",
+        "prompt": "An oil painting at the beach of a blue bicycle to the left of a bench and to the right of a palm tree with three seagulls in the sky",
+        "generator": "sdxl",
+        "llm_parsed_prompt":{ 
+            "objects": [
+                ["bicycle", ["blue"]],
+                ["palm tree", [null]],
+                ["seagull", [null, null, null]],
+                ["bench", [null]]
+            ],
+            "bg_prompt": "An oil painting at the beach",
+            "neg_prompt": null
+        },
+        "llm_layout_suggestions": [["palm tree #1", [0.001, 0.002, 0.462, 0.908]], ["seagull #8", [0.386, 0.091, 0.253, 0.139]], ["seagull #2", [0.641, 0.532, 0.116, 0.061]], ["seagull #11", [0.316, 0.428, 0.266, 0.182]], ["bench #1", [0.444, 0.771, 0.368, 0.146]], ["blue bicycle #1", [0.2, 0.65, 0.3, 0.3]]]
+    },
+    {
+        "input_fname": "sdxl_motor",
+        "output_dir": "sdxl_motor",
+        "prompt": "A realistic photo with a monkey sitting above a green motorcycle on the left and another raccoon sitting above a blue motorcycle on the right",
+        "generator": "sdxl",
+        "llm_parsed_prompt": {
+            "objects": [
+                ["monkey", [null]],
+                ["motorcycle", ["green", "blue"]],
+                ["raccoon", [null]]
+            ],
+            "bg_prompt": "A realistic photo",
+            "neg_prompt": null
+        },
+        "llm_layout_suggestions":  [["green motorcycle #1", [0.025, 0.357, 0.448, 0.586]], ["blue motorcycle #1", [0.541, 0.365, 0.496, 0.602]], ["monkey #1", [0.06, 0.077, 0.422, 0.73]], ["raccoon #1", [0.571, 0.083, 0.39, 0.833]]]
+    }
+]
