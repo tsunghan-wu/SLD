@@ -1,6 +1,8 @@
 # Self-correcting LLM-controlled Diffusion Models
 
-[![arXiv](https://img.shields.io/badge/arXiv-2311.16090-red)](https://arxiv.org/abs/2311.16090)
+This repo provides the PyTorch source code of our paper: [Self-correcting LLM-controlled Diffusion Models (CVPR 2024)](https://arxiv.org/abs/2311.16090). Check out project page [here](https://self-correcting-llm-diffusion.github.io/)!
+
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)  [![arXiv](https://img.shields.io/badge/arXiv-2311.16090-red)](https://arxiv.org/abs/2311.16090) 
 
 
 **Authors**: [Tsung-Han Wu\*](https://tsunghan-wu.github.io/), [Long Lian\*](https://tonylian.com/), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Boyi Li†](https://sites.google.com/site/boyilics/home), [Trevor Darrell†](https://people.eecs.berkeley.edu/~trevor/) at UC Berkeley. 
@@ -29,7 +31,7 @@ pip3 install -r requirements.txt
 
 Note: Ensure the versions of transformers and diffusers match the requirements. Versions of `transformers` before 4.35 do not include `owlv2`, and our code is incompatible with some newer versions of diffusers with different API.
 
-## :gear: Demos
+## :gear: Usage
 
 Execute the following command to process images from an input directory according to the instruction in the JSON file and save the transformed images to an output directory.
 
@@ -73,6 +75,66 @@ Ensure you replace placeholder text with actual values for each parameter. The l
 - **For security reasons, avoid uploading your secret key to public repositories or online platforms.**
 
 3. Execute the Script: Run the script similarly to the provided demo, adjusting the command line arguments as needed for your specific configuration and the JSON file you've prepared.
+
+## :chart_with_upwards_trend: Quantitative Evaluation on Text-to-Image (T2I) Generation
+
+In our research, we've shown the superior performance of SLD across four key tasks: negation, numeracy, attribute binding, and spatial relationship. Utilizing the LMD 400 prompts T2I generation [benchmark](https://github.com/TonyLianLong/LLM-groundedDiffusion?tab=readme-ov-file#run-our-benchmark-on-text-to-layout-generation-evaluation), and employing the state-of-the-art [OWLv2](https://huggingface.co/docs/transformers/main/en/model_doc/owlv2) detector with a fixed detection threshold, we've ensured a fair comparison between different methods. Below, we provide both the code and the necessary data for full reproducibility.
+
+### Image Correction Logs and Results
+
+The image generation process, including both the initial and resulting images, has been documented to ensure transparency and ease of further research:
+
+| Method                | Negation | Numeracy | Attribution | Spatial | Overall   |
+| --------------------- | -------- | -------- | ----------- | ------- | --------- |
+| DALL-E 3               | 27       | 37       | 74          | 71      | 52.3%     |
+| [DALL-E 3 w/ SLD](https://drive.google.com/file/d/1rHqah-TEPsE2vXDS_CQTBhlSVSQ8fGh5/view?usp=sharing)              | 84       | 58       | 80          | 85      | 76.8% (+24.5)    |
+| LMD+        | 100      | 80       | 49          | 88      | 79.3%     |
+| [LMD+ w/ SLD](https://drive.google.com/file/d/1-yw9_erL6DsQhVVM3LJAeiNRA2dm5VRl/view?usp=sharing)        | 100      | 94       | 65          | 97      | 89.0%  (+9.7)   |
+
+For access to the data and to generate these performance metrics or to reproduce the correction process yourself, please refer to the above table. The structure of the dataset is as follows:
+
+```
+dalle3_sld
+├── 000                    # LMD benchmark prompt ID
+│   ├── chatgpt_data.json  # raw GPT-4 response
+│   ├── det_result1.jpg    # visualization of bboxes
+│   ├── initial_image.jpg  # initial generation results
+│   ├── log.txt            # loggging
+│   └── round1.jpg         # round[X] SLD correction rsults
+├── 001
+│   ├── chatgpt_data.json
+│   ├── det_result1.jpg
+...
+```
+
+
+To generate these performance metrics on your own, execute the following command:
+
+```
+python3 lmd_benchmark_evaluation.py --data_dir [GENERATION_DIR] [--optional-args]
+```
+
+### Reproducing Results
+
+To replicate our image correction process, follow these steps:
+
+1. Setting the config
+
+- Duplicate the config/benchmark_config.ini file to a preferred location.
+- Update this copied config file with your OpenAI API key and organization details, along with any other necessary hyper-parameter adjustments.
+- **For security reasons, avoid uploading your secret key to public repositories or online platforms.**
+
+2. Execute the SLD Correction Script
+
+   To apply the SLD correction and perform the evaluation, run the following command:
+
+   ```
+   python3 SLD_benchmark.py --data_dir [OUTPUT_DIR]
+   ```
+
+   Executing this command will overwrite all existing log files and generated images within the specified directory. Ensure you have backups or are working on copies of data that you can afford to lose.
+
+   Also, if you wanna correct other diffusion models, feel free to put the data into the similar structure and then run our code!
 
 ## :question: Frequently Asked Questions (FAQ)
 

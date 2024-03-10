@@ -334,7 +334,7 @@ def show_boxes(
 
     # Add background prompt if present
     if bg_prompt is not None:
-        for ax in [ax1, ax2, ax3]:
+        for ax in [ax1, ax2]:
             ax.text(
                 0,
                 0,

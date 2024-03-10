@@ -180,6 +180,7 @@ class Detector:
         add_objects = []
         move_objects = []
         change_attr_object = []
+        preserve_objects = []
         # Move or unchanged
         for key in same_keys:
             old_entry = pop_entry_via_name(key, det_results)
@@ -188,6 +189,8 @@ class Detector:
                 check_same_object(old_entry[1], new_entry[1], iou_threshold) is False
             ):  # Move
                 move_objects.append((tuple(old_entry), tuple(new_entry)))
+            else:
+                preserve_objects.append(tuple(old_entry))
 
         # Add or change attribute
         for key in add_keys:
@@ -212,7 +215,7 @@ class Detector:
             remove_objects.append(tuple(entry))
 
         # Check attribute change
-        return remove_objects, add_objects, move_objects, change_attr_object
+        return preserve_objects, remove_objects, add_objects, move_objects, change_attr_object
 
     def summarize_result(self, attribute_objects, primitive_objects):
         """

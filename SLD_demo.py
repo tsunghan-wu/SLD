@@ -31,7 +31,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 # Operation #1: Addition (The code is in sld/image_generator.py)
 
 # Operation #2: Deletion (Preprocessing region mask for removal)
-def get_remove_region(entry, remove_objects, move_objects, models, config):
+def get_remove_region(entry, remove_objects, move_objects, preserve_objs, models, config):
     """Generate a region mask for removal given bounding box info."""
 
     image_source = np.array(Image.open(entry["output"][-1]))
@@ -48,9 +48,16 @@ def get_remove_region(entry, remove_objects, move_objects, models, config):
     for obj in remove_items:
         masks = run_sam(bbox=obj[1], image_source=image_source, models=models)
         remove_mask = remove_mask | masks
-    # Process the SAM mask by averaging, thresholding, and dilating.
-    remove_region = run_sam_postprocess(remove_mask, H, W, config)
 
+    # Preserve the regions that should not be removed
+    preserve_mask = np.zeros((H, W, 3), dtype=bool)
+    for obj in preserve_objs:
+        masks = run_sam(bbox=obj[1], image_source=image_source, models=models)
+        preserve_mask = preserve_mask | masks
+    # Process the SAM mask by averaging, thresholding, and dilating.
+    preserve_region = run_sam_postprocess(preserve_mask, H, W, config)
+    remove_region = run_sam_postprocess(remove_mask, H, W, config)
+    remove_region = np.logical_and(remove_region, np.logical_not(preserve_region))
     return remove_region
 
 
@@ -305,6 +312,7 @@ if __name__ == "__main__":
         entry["llm_suggestion"] = copy.deepcopy(llm_suggestions)
         # Compare the two layouts to know where to update
         (
+            preserve_objs,
             deletion_objs,
             addition_objs,
             repositioning_objs,
@@ -312,6 +320,7 @@ if __name__ == "__main__":
         ) = det.parse_list(det_results, llm_suggestions)
 
         print("-" * 5 + f" Editing Operations " + "-" * 5)
+        print(f"* Preservation: {preserve_objs}")
         print(f"* Addition: {addition_objs}")
         print(f"* Deletion: {deletion_objs}")
         print(f"* Repositioning: {repositioning_objs}")
@@ -338,7 +347,7 @@ if __name__ == "__main__":
         print("-" * 5 + f" Image Manipulation " + "-" * 5)
 
         deletion_region = get_remove_region(
-            entry, deletion_objs, repositioning_objs, models, config
+            entry, deletion_objs, repositioning_objs, preserve_objs, models, config
         )
         repositioning_objs = get_repos_info(
             entry, repositioning_objs, models, config
