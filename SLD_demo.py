@@ -347,7 +347,7 @@ if __name__ == "__main__":
         print("-" * 5 + f" Image Manipulation " + "-" * 5)
 
         deletion_region = get_remove_region(
-            entry, deletion_objs, repositioning_objs, preserve_objs, models, config
+            entry, deletion_objs, repositioning_objs, [], models, config
         )
         repositioning_objs = get_repos_info(
             entry, repositioning_objs, models, config
