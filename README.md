@@ -7,9 +7,6 @@ This repo provides the PyTorch source code of our paper: [Self-correcting LLM-co
 
 **Authors**: [Tsung-Han Wu\*](https://tsunghan-wu.github.io/), [Long Lian\*](https://tonylian.com/), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Boyi Li†](https://sites.google.com/site/boyilics/home), [Trevor Darrell†](https://people.eecs.berkeley.edu/~trevor/) at UC Berkeley. 
 
-## Update
-- 03/10/2024 - Add the all SLD scripts and results on the LMD T2I benchmark (all done!)
-- 02/13/2024 - Add self-correction and iamge editing scripts with a few demo examples
 
 ## :rocket: The Self-correcting LLM-controlled Diffusion (SLD) Framework Highlights:
 1. **Self-correction**: Enhances generative models with LLM-integrated detectors for precise text-to-image alignment.
@@ -18,6 +15,9 @@ This repo provides the PyTorch source code of our paper: [Self-correcting LLM-co
 
 ![](https://self-correcting-llm-diffusion.github.io/main_figure.jpg)
 
+## :rotating_light: Update
+- 03/10/2024 - Add the all SLD scripts and results on the LMD T2I benchmark (all done!)
+- 02/13/2024 - Add self-correction and iamge editing scripts with a few demo examples
 
 ## :wrench: Installation Guide
 
