@@ -7,6 +7,9 @@ This repo provides the PyTorch source code of our paper: [Self-correcting LLM-co
 
 **Authors**: [Tsung-Han Wu\*](https://tsunghan-wu.github.io/), [Long Lian\*](https://tonylian.com/), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Boyi Li†](https://sites.google.com/site/boyilics/home), [Trevor Darrell†](https://people.eecs.berkeley.edu/~trevor/) at UC Berkeley. 
 
+## Update
+- 03/10/2024 - Add the all SLD scripts and results on the LMD T2I benchmark (all done!)
+- 02/13/2024 - Add self-correction and iamge editing scripts with a few demo examples
 
 ## :rocket: The Self-correcting LLM-controlled Diffusion (SLD) Framework Highlights:
 1. **Self-correction**: Enhances generative models with LLM-integrated detectors for precise text-to-image alignment.
@@ -14,6 +17,7 @@ This repo provides the PyTorch source code of our paper: [Self-correcting LLM-co
 3. **Universal Compatibility**: Works with ANY image generator, like DALL-E 3, requiring no extra training or data.
 
 ![](https://self-correcting-llm-diffusion.github.io/main_figure.jpg)
+
 
 ## :wrench: Installation Guide
 
@@ -111,7 +115,7 @@ dalle3_sld
 To generate these performance metrics on your own, execute the following command:
 
 ```
-python3 lmd_benchmark_evaluation.py --data_dir [GENERATION_DIR] [--optional-args]
+python3 lmd_benchmark_eval.py --data_dir [GENERATION_DIR] [--optional-args]
 ```
 
 ### Reproducing Results
@@ -148,7 +152,7 @@ To replicate our image correction process, follow these steps:
 
 3. **Isn't using SDXL for improved visualization results unfair?**
 
-   *For quantitative comparisons with baselines in our paper (Table 1), we explicitly exclude the SDXL refinement step to maintain fairness. Also, we set the same hyper-parameters across all models. We will cleanup our code upload to the repo soon.*
+   *For quantitative comparisons with baselines in our paper (Table 1), we explicitly exclude the SDXL refinement step to maintain fairness. Also, we set the same hyper-parameters across all models in [quantitative evaluation](#chart_with_upwards_trend-quantitative-evaluation-on-text-to-image-t2i-generation)*
 
 4. **Can other LLMs replace GPT-4 in your process?**
 
