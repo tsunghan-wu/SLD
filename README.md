@@ -17,7 +17,7 @@ This repo provides the PyTorch source code of our paper: [Self-correcting LLM-co
 
 ## :rotating_light: Update
 - 03/10/2024 - Add the all SLD scripts and results on the LMD T2I benchmark (all done!)
-- 02/13/2024 - Add self-correction and iamge editing scripts with a few demo examples
+- 02/13/2024 - Add self-correction and image editing scripts with a few demo examples
 
 ## :wrench: Installation Guide
 
